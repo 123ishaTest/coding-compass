@@ -1,0 +1,26 @@
+@import 'tailwindcss';
+@import './darcula.css';
+
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+
+@plugin 'daisyui' {
+  themes: 'emerald';
+}
+
+:root {
+  --color-primary: oklch(62% 0.194 149.214);
+}
+
+@utility prose {
+  & > * {
+    /*--tw-prose-links: var(--color);*/
+    --tw-prose-headings: var(--color-primary);
+  }
+}
+
+.pixelated {
+  image-rendering: -moz-crisp-edges;
+  image-rendering: pixelated;
+  -ms-interpolation-mode: nearest-neighbor;
+}

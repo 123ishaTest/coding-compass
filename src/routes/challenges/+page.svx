@@ -1,0 +1,26 @@
+<script lang="ts">
+  import ChallengeList from '$lib/components/ChallengeList.svelte';
+  import { challenges } from '$lib/content/challenges.ts';
+</script>
+
+## How to use
+Below is an overview of all Challenges.
+While it is recommended to start with the first one, the order you tackle them in is completely up to you.
+
+The process of using *Coding Compass* roughly looks like this:
+
+- Determine the programming language and tools you want to work with.
+- Select a Challenge you would like to work on.
+- Take your time to read the requirements.
+- Implement it however you like.
+- Share your solution with the [community](https://discord.gg/FpPru952j6) and get valuable feedback!
+- Rework your implementation according to the feedback.
+- Be proud of yourself! (you've earned it)
+
+And when you feel like it, on to the next one!
+
+## Challenges
+
+<div class="flex flex-col not-prose">
+  <ChallengeList {challenges}></ChallengeList>
+</div>

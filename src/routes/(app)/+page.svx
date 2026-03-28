@@ -1,0 +1,85 @@
+<script lang="ts">
+	import { asset } from '$app/paths';
+
+	const compass = asset('/favicon.png');
+</script>
+
+
+<div class="hero">
+	<div class="hero-content">
+		<div>
+			<h1 class="text-5xl mb-0 font-bold text-center">Coding Compass</h1>
+			<div class="flex flex-col sm:flex-row sm:space-x-12 w-full items-center">
+				<img class="pixelated w-48 h-48" src={compass} alt="Compass" />
+
+				<div class="compass-description flex flex-col">
+					<div class="flex flex-row items-center space-x-2 justify-center mt-4 -mb-4">
+						<span class="font-bold">Compass</span>
+						<span class="text-xs italic">/ˈkʌmpəs/</span>
+					</div>
+					<h4 class="italic">noun</h4>
+					<span>1. an instrument for determining directions</span>
+					<h4 class="italic">verb</h4>
+					<span>2. go round (something) in a circular course.</span>
+					<span>3. contrive to accomplish (something).</span>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+*Coding Compass* is a new approach to programming tutorials.
+Instead of copying code you vaguely understand from a video, _Coding Compass_ presents you with hand-crafted **Challenges**.
+Each challenge points you in the direction of a specific architectural principle.
+
+*Coding Compass* teaches software design principles by providing requirements for mechanics.
+But it doesn't show any code, the implementation is completely up to you!
+
+After finishing a challenge, you are encouraged to share your solution with the [community](https://discord.gg/FpPru952j6), who will provide feedback and new insights!
+
+<div class="flex flex-col space-y-4 md:space-y-0 md:flex-row md:flex-wrap md:space-x-4">
+	<div class="card card-border bg-base-200 flex-1">
+		<div class="card-body prose">
+			<span class="card-title text-primary">Use the tools you want to learn</span>
+			<span>
+				<span class="italic">Coding Compass</span> is programming language agnostic.
+				Meaning you can use whatever you were intending on learning: Python, Godot, Lisp, whatever!</span>
+		</div>
+	</div>
+	<div class="card card-border bg-base-200 flex-1">
+		<div class="card-body prose">
+			<span class="card-title text-primary">Free forever</span>
+			<span>No payments, no signups. Simply a list of challenges that you can work on at your own pace.</span>
+		</div>
+	</div>
+</div>
+
+## Get started right away
+
+Open your favourite code editor and head over to [Challenges](./challenges) to get started with your first challenge!
+
+If you get stuck or would like to work together with others, feel free to join the [Discord](https://discord.gg/FpPru952j6)!
+
+
+## FAQ
+
+### Who runs this thing?
+As of right now it's just me, [Isha](https://123ishatest.com).
+I'm a freelance software developer who has been making games for the last 10 years. I fell in love with software (over)engineering, so now I spend most of my time working on my game engine, [Ludiek](https://ludiek.123ishatest.com/).
+
+### How much does it cost?
+*Coding Compass* is free, as all knowledge should be.
+
+### Can I contribute in any way?
+Yes! It takes a lot of work to run this thing.
+I'm always looking for new Challenge ideas or testers. Join the [Discord](https://discord.gg/FpPru952j6) to get in touch.
+Financial support on [Patreon](https://www.patreon.com/123ishatest) is also welcomed as it allows me to spend more time on *Coding Compass*!
+
+### How much time does each challenge take?
+However much time you decide to spend on it, but they are designed to take roughly **2 hours**.
+
+### Who are the challenges designed for?
+Anyone who has an interest in getting better at software engineering.
+Whether you are a beginner or a seasoned veteran, it can never hurt to be exposed to fresh ideas.

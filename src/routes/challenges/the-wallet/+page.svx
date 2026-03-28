@@ -1,0 +1,250 @@
+<script lang="ts">
+import ChallengeTask from '$lib/components/ChallengeTask.svelte';
+import TaskHint from '$lib/components/TaskHint.svelte';
+</script>
+
+## Introduction
+As this is your first Challenge, let's take a look at how they are constructed.
+Each Challenge consists of the following parts:
+
+- **Introduction**, an overview of the problem and the solution you will be building.
+- **Commands**, functionality your implementation must have at the very least.
+  - Commands are expressed in pseudocode as <br>`commandName(argument1, argument2) -> returnValue`
+- **Tasks**, features for you to implement. An example of the expected behaviour is given in terms of the previously defined Commands.
+  - **Hints** guide you towards concepts to google, they appear <TaskHint>like this</TaskHint>. If they sound unfamiliar, take your time to study the topic.
+- **Bonus**, special functionality for you to take a crack at after solving all the regular tasks.
+
+It is highly recommended to read through all **Tasks** carefully before you start designing your solution.
+Some might be tricky!
+
+Remember that you can use whatever programming language you like to solve the tasks.
+How you structure your code is completely up to you.
+If you are used to other tutorials that might sound scary, but really it's exciting!
+
+Good luck!
+
+## The Wallet
+
+The Wallet is very common feature among video games.
+If you have any sort of money that can be gained and spend, you want some implementation of a wallet.
+
+The wallet concerns itself with gaining and spending various currencies.
+Users can gain money to increase the balance for a certain currency, and spend money to decrease the balance.
+They can not overspend, as the balance cannot go below 0.
+
+## Commands
+#### `gainCurrency(currencyId, amount)`
+Add the `amount` to the balance of the specified `currencyId`.
+
+#### `spendCurrency(currencyId, amount) -> success`
+Remove the `amount` from the balance of the specified `currencyId` if we have it.
+Return whether the spending succeeded.
+
+#### `getBalance(currencyId) -> balance`
+Retrieve the amount of `currencyId` currently stored.
+
+## Tasks
+Each task describes a use-case of the wallet, and provides some example behaviour. <TaskHint>Test-driven development</TaskHint>
+
+Make sure your implementation supports the example, but try to think beyond it as well.
+Are there special cases which are not covered?
+
+### Currency Management
+The essence of the wallet.
+Gaining and spending various currencies.
+
+<ChallengeTask>Balances start at 0</ChallengeTask>
+The balance for each currency should start at 0.
+
+```ts
+getBalance('coins') -> 0
+getBalance('diamonds') -> 0
+```
+
+<ChallengeTask>Gain currency</ChallengeTask>
+Add the specified `amount` to the balance.
+
+```ts
+gainCurrency('coins', 4)
+getBalance('coins') -> 4
+```
+
+Gaining multiple times should add up.
+```ts
+gainCurrency('coins', 4)
+gainCurrency('coins', 6)
+getBalance('coins') -> 10
+```
+
+<ChallengeTask>Gain different currencies</ChallengeTask>
+Different currencies should not interfere with each other.
+
+```ts
+gainCurrency('coins', 4)
+gainCurrency('diamonds', 6)
+getBalance('coins') -> 4
+getBalance('diamonds') -> 4
+```
+
+<ChallengeTask>Spend currency</ChallengeTask>
+Spending currency should decrease it from the balance.
+
+```ts
+gainCurrency('coins', 10)
+spendCurrency('coins', 6) -> true
+getBalance('coins') -> 4
+```
+
+<ChallengeTask>Do not overspend currency</ChallengeTask>
+The balance should never drop below 0.
+
+```ts
+gainCurrency('coins', 5)
+spendCurrency('coins', 3) -> true
+getBalance('coins') -> 2
+spendCurrency('coins', 3) -> false
+getBalance('coins') -> 2
+```
+
+<ChallengeTask>Add multiple currencies at once</ChallengeTask>
+
+```ts
+gainCurrencies([('coins', 1), ('diamonds', 2)])
+getBalance('coins') -> 1
+getBalance('diamonds') -> 2
+```
+
+<ChallengeTask>Spend multiple currencies at once</ChallengeTask>
+
+```ts
+gainCurrency('coins', 5)
+gainCurrency('diamonds', 5)
+spendCurrencies([('coins', 4), ('diamonds', 3)])
+getBalance('coins') -> 1
+getBalance('diamonds') -> 2
+```
+
+This Task is trickier than it seems, consider what should happen in the following scenario
+
+```ts
+gainCurrency('coins', 5)
+gainCurrency('diamonds', 1)
+spendCurrencies([('coins', 4), ('diamonds', 2)])
+getBalance('coins') -> ?
+getBalance('diamonds') -> ?
+```
+Or even this one
+```ts
+gainCurrency('coins', 5)
+spendCurrencies([('coins', 2), ('coins', 4)])
+getBalance('coins') -> ?
+```
+
+### Error handling
+While it is nice to believe that once you've implemented everything, your wallet works perfectly, the reality is often different. <TaskHint>happy path</TaskHint>
+
+You might not be the only developer working on a project, and you don't want your colleagues to break your stuff.
+
+Let's try to get one step ahead of the _"but obviously you shouldn't do that"_ discussion!
+
+<ChallengeTask>Don't accept negative currencies</ChallengeTask>
+
+Negative `amount` ? Ridiculous!
+```ts
+gainCurrency('coins', -1)
+getBalance('coins') -> 0
+```
+```ts
+spendCurrency('coins', -1)
+getBalance('coins') -> 0
+```
+
+### Ease of use
+With our base logic in place, the wallet is technically functional.
+But some operations, such as checking whether we can afford something, can be a hassle to perform.
+We want to improve our wallet such that it becomes easier to use. <TaskHint>utility methods</TaskHint>
+
+<ChallengeTask>Can afford a cost</ChallengeTask>
+A check whether we can afford something.
+
+```ts
+gainCurrency('money', 3
+canAfford('money', 2) -> true
+canAfford('money', 4) -> false
+```
+
+### Displaying information
+
+<ChallengeTask>Get notified when a balance changes</ChallengeTask>
+Often when a value changes, we want to notify our UI so it can update.
+We could tell our UI what to do from inside the wallet, but that is not its responsibility. <TaskHint>Single-responsibility principe</TaskHint>
+
+Create a way to "connect" a function to run when a balance changes <TaskHint>callback</TaskHint>
+
+<ChallengeTask>Formatting balances</ChallengeTask>
+
+We want to display information about our wallet in a way that is useful to the user.
+If we have `37975227936943673922808` coins, we might want to display it as `3.80+22` instead.
+
+Create a way to format the balances in your preferred way when outputting them.
+
+### Multiple wallets
+In a multiplayer game, we might be dealing with multiple wallets too.
+
+<ChallengeTask>Transfer currencies from one wallet to the other</ChallengeTask>
+A transaction is the transfer of an amount from one wallet to the other.
+It should only be performed if the sender has the required balance
+
+```ts
+walletA: gainCurrency('money', 5)
+walletB: gainCurrency('money', 5)
+
+transaction('money', 3, walletA, walletB)
+
+walletA: getBalance('money') -> 2
+walletB: getBalance('money') -> 8
+```
+
+<ChallengeTask>Merge wallets together</ChallengeTask>
+
+```ts
+walletA: gainCurrency('money', 1)
+walletB: gainCurrency('money', 2)
+walletB: gainCurrency('diamonds', 3)
+
+walletAB: merge(walletA, walletB)
+
+walletAB: getBalance('money') -> 3
+walletAB: getBalance('diamonds') -> 3
+```
+
+
+## Bonus
+Bonus tasks are more free-form, and can require you to make big changes to your implementation
+
+<ChallengeTask>Save function</ChallengeTask>
+It can often be useful to export the state of your wallet.
+A save function should create a map of all stored currencies and return it. <TaskHint>serialization</TaskHint>
+
+```ts
+gainCurrency('coins', 5)
+gainCurrency('diamonds', 10)
+save() -> { coins: 5, diamonds: 10 }
+```
+<ChallengeTask>Load function</ChallengeTask>
+After saving, we want to restore our wallet with the saved data.
+
+```ts
+load({ coins: 5, diamonds: 10 })
+getBalance('coins') -> 5
+getBalance('diamonds') -> 10
+```
+
+<ChallengeTask>Currency conversions</ChallengeTask>
+
+Imagine there is a special currency called `copper`.
+When you have 100 `copper`, it should turn into 1 `silver`.
+And when you have 100 `silver`, it should turn into 1 `gold`.
+
+What would be a clever way to implement this without having to change your wallet at all?
+
