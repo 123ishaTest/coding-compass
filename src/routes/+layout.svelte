@@ -15,9 +15,8 @@
     </div>
     <div class="navbar-center flex">
       <ul class="menu menu-horizontal px-1">
-        <li><a href={resolve('/')}>Home</a></li>
-
-        <li><a href={resolve('/challenges')}>Challenges</a></li>
+        <li><a class="font-bold" href={resolve('/')}>Home</a></li>
+        <li><a class="font-bold" href={resolve('/challenges')}>Challenges</a></li>
       </ul>
     </div>
     <div class="navbar-end px-2">
