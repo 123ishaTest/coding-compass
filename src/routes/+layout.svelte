@@ -1,6 +1,7 @@
 <script lang="ts">
   import './layout.css';
   import { resolve } from '$app/paths';
+  import ThemeToggle from '$lib/components/ThemeToggle.svelte';
 
   let { children } = $props();
 </script>
@@ -15,7 +16,9 @@
         <li><a href={resolve('/challenges')}>Challenges</a></li>
       </ul>
     </div>
-    <div class="navbar-end"></div>
+    <div class="navbar-end">
+      <ThemeToggle></ThemeToggle>
+    </div>
   </div>
 
   <div class="flex flex-col items-center overflow-y-scroll">

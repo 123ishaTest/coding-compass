@@ -5,7 +5,9 @@
 @plugin '@tailwindcss/typography';
 
 @plugin 'daisyui' {
-  themes: 'emerald';
+  themes:
+    light --default,
+    dark --prefersdark;
 }
 
 :root {
