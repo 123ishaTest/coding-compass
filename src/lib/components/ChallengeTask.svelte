@@ -12,9 +12,9 @@
 </script>
 
 <div class="flex flex-row items-center space-x-2">
-  <h4 class={textColor}>{@render children()}</h4>
-
   <div class="mt-3">
     <input type="checkbox" class="checkbox text-primary" bind:checked={isCompleted} />
   </div>
+
+  <h4 class={textColor}>{@render children()}</h4>
 </div>
