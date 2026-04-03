@@ -26,7 +26,7 @@
     </div>
     <div class="navbar-end px-2">
       <div class="flex flex-row items-center space-x-2">
-        <a href="https://github.com/123ishaTest/ludiek" target="_blank">
+        <a href="https://github.com/123ishaTest/coding-compass" target="_blank">
           <img class="w-6" src={asset('/icons/github.svg')} alt="Github" />
         </a>
         <a href="https://discord.gg/FpPru952j6" target="_blank">
