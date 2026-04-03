@@ -2,8 +2,13 @@
   import './layout.css';
   import { asset, resolve } from '$app/paths';
   import ThemeToggle from '$lib/components/ThemeToggle.svelte';
+  import { setContext } from 'svelte';
+  import { localStore } from '$lib/util/localStorage.svelte.ts';
 
   let { children } = $props();
+
+  const progress = localStore('@123ishatest/coding-compass/progress', {});
+  setContext('progress', progress);
 </script>
 
 <div class="flex h-screen flex-col">

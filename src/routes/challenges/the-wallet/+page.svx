@@ -53,7 +53,7 @@ Are there special cases which are not covered?
 The essence of the wallet.
 Gaining and spending various currencies.
 
-<ChallengeTask>Balances start at 0</ChallengeTask>
+<ChallengeTask key="wallet/balance-0">Balances start at 0</ChallengeTask>
 The balance for each currency should start at 0.
 
 ```ts
@@ -61,7 +61,7 @@ getBalance('coins') -> 0
 getBalance('diamonds') -> 0
 ```
 
-<ChallengeTask>Gain currency</ChallengeTask>
+<ChallengeTask key="wallet/gain-currency">Gain currency</ChallengeTask>
 Add the specified `amount` to the balance.
 
 ```ts
@@ -76,7 +76,7 @@ gainCurrency('coins', 6)
 getBalance('coins') -> 10
 ```
 
-<ChallengeTask>Gain different currencies</ChallengeTask>
+<ChallengeTask key="wallet/different-currencies">Gain different currencies</ChallengeTask>
 Different currencies should not interfere with each other.
 
 ```ts
@@ -86,7 +86,7 @@ getBalance('coins') -> 4
 getBalance('diamonds') -> 4
 ```
 
-<ChallengeTask>Spend currency</ChallengeTask>
+<ChallengeTask key="wallet/spend-currencies">Spend currency</ChallengeTask>
 Spending currency should decrease it from the balance.
 
 ```ts
@@ -95,7 +95,7 @@ spendCurrency('coins', 6) -> true
 getBalance('coins') -> 4
 ```
 
-<ChallengeTask>Do not overspend currency</ChallengeTask>
+<ChallengeTask key="wallet/no-overspend">Do not overspend currency</ChallengeTask>
 The balance should never drop below 0.
 
 ```ts
@@ -106,7 +106,7 @@ spendCurrency('coins', 3) -> false
 getBalance('coins') -> 2
 ```
 
-<ChallengeTask>Add multiple currencies at once</ChallengeTask>
+<ChallengeTask key="wallet/multiple-currencies">Add multiple currencies at once</ChallengeTask>
 
 ```ts
 gainCurrencies([('coins', 1), ('diamonds', 2)])
@@ -114,7 +114,7 @@ getBalance('coins') -> 1
 getBalance('diamonds') -> 2
 ```
 
-<ChallengeTask>Spend multiple currencies at once</ChallengeTask>
+<ChallengeTask key="wallet/spend-multiple">Spend multiple currencies at once</ChallengeTask>
 
 ```ts
 gainCurrency('coins', 5)
@@ -147,7 +147,7 @@ You might not be the only developer working on a project, and you don't want you
 
 Let's try to get one step ahead of the _"but obviously you shouldn't do that"_ discussion!
 
-<ChallengeTask>Don't accept negative currencies</ChallengeTask>
+<ChallengeTask key="wallet/no-negative">Don't accept negative currencies</ChallengeTask>
 
 Negative `amount` ? Ridiculous!
 ```ts
@@ -164,7 +164,7 @@ With our base logic in place, the wallet is technically functional.
 But some operations, such as checking whether we can afford something, can be a hassle to perform.
 We want to improve our wallet such that it becomes easier to use. <TaskHint>utility methods</TaskHint>
 
-<ChallengeTask>Can afford a cost</ChallengeTask>
+<ChallengeTask key="wallet/can-afford">Can afford a cost</ChallengeTask>
 A check whether we can afford something.
 
 ```ts
@@ -175,13 +175,13 @@ canAfford('money', 4) -> false
 
 ### Displaying information
 
-<ChallengeTask>Get notified when a balance changes</ChallengeTask>
+<ChallengeTask key="wallet/events">Get notified when a balance changes</ChallengeTask>
 Often when a value changes, we want to notify our UI so it can update.
 We could tell our UI what to do from inside the wallet, but that is not its responsibility. <TaskHint>Single-responsibility principe</TaskHint>
 
 Create a way to "connect" a function to run when a balance changes <TaskHint>callback</TaskHint>
 
-<ChallengeTask>Formatting balances</ChallengeTask>
+<ChallengeTask key="wallet/formatting">Formatting balances</ChallengeTask>
 
 We want to display information about our wallet in a way that is useful to the user.
 If we have `37975227936943673922808` coins, we might want to display it as `3.80+22` instead.
@@ -191,7 +191,7 @@ Create a way to format the balances in your preferred way when outputting them.
 ### Multiple wallets
 In a multiplayer game, we might be dealing with multiple wallets too.
 
-<ChallengeTask>Transfer currencies from one wallet to the other</ChallengeTask>
+<ChallengeTask key="wallet/transfer">Transfer currencies from one wallet to the other</ChallengeTask>
 A transaction is the transfer of an amount from one wallet to the other.
 It should only be performed if the sender has the required balance
 
@@ -205,7 +205,7 @@ walletA: getBalance('money') -> 2
 walletB: getBalance('money') -> 8
 ```
 
-<ChallengeTask>Merge wallets together</ChallengeTask>
+<ChallengeTask key="wallet/merge">Merge wallets together</ChallengeTask>
 
 ```ts
 walletA: gainCurrency('money', 1)
@@ -222,7 +222,7 @@ walletAB: getBalance('diamonds') -> 3
 ## Bonus
 Bonus tasks are more free-form, and can require you to make big changes to your implementation
 
-<ChallengeTask>Save function</ChallengeTask>
+<ChallengeTask key="wallet/save">Save function</ChallengeTask>
 It can often be useful to export the state of your wallet.
 A save function should create a map of all stored currencies and return it. <TaskHint>serialization</TaskHint>
 
@@ -231,7 +231,7 @@ gainCurrency('coins', 5)
 gainCurrency('diamonds', 10)
 save() -> { coins: 5, diamonds: 10 }
 ```
-<ChallengeTask>Load function</ChallengeTask>
+<ChallengeTask key="wallet/load">Load function</ChallengeTask>
 After saving, we want to restore our wallet with the saved data.
 
 ```ts
@@ -240,7 +240,7 @@ getBalance('coins') -> 5
 getBalance('diamonds') -> 10
 ```
 
-<ChallengeTask>Currency conversions</ChallengeTask>
+<ChallengeTask key="wallet/conversion">Currency conversions</ChallengeTask>
 
 Imagine there is a special currency called `copper`.
 When you have 100 `copper`, it should turn into 1 `silver`.
