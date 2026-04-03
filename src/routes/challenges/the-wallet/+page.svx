@@ -168,7 +168,7 @@ We want to improve our wallet such that it becomes easier to use. <TaskHint>util
 A check whether we can afford something.
 
 ```ts
-gainCurrency('money', 3
+gainCurrency('money', 3)
 canAfford('money', 2) -> true
 canAfford('money', 4) -> false
 ```
