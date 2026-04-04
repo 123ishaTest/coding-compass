@@ -83,7 +83,7 @@ Different currencies should not interfere with each other.
 gainCurrency('coins', 4)
 gainCurrency('diamonds', 6)
 getBalance('coins') -> 4
-getBalance('diamonds') -> 4
+getBalance('diamonds') -> 6
 ```
 
 <ChallengeTask key="wallet/spend-currencies">Spend currency</ChallengeTask>
